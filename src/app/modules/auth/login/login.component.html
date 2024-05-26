@@ -1,0 +1,49 @@
+<div class="min-h-screen bg-teal-950 flex justify-center items-center">
+  <div class="bg-gray-200 rounded-lg w-full m-4 md:m-0 shadow-md px-8 py-12 flex flex-col md:flex-row md:w-1/2 md:h-[600px]">
+      <div class="bg-gray-300 md:w-5/12 flex flex-col justify-center md:justify-start pt-28 px-8 py-4 border-2 border-gray-400  border-b-0 md:border-b-2 md:border-r-0  ">
+      
+        <p class="text-2xl font-semibold text-center  font-sans  text-teal-600 mb-4">Welcome back</p>
+        <div class="text-gray-700 flex flex-col justify-center">
+            <div class="md:mt-4 mt-2 "> 
+                <div class="mb-2">
+                    <span class="font-semibold">Sample Admin:</span> minu123
+                </div>
+                <div class="mb-4">
+                    <span class="font-semibold">Password:</span> 232323
+                </div>
+            </div>
+            <div>
+
+                <div class="mb-2">
+                    <span class="font-semibold">Sample User:</span> minu123dsfaf
+                </div>
+                <div>
+                    <span class="font-semibold">Password:</span> 2323ds23
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="md:w-7/12 flex flex-col justify-center px-8 py-4 border-2 border-gray-400 md:border-l-0 border-t-0 md:border-t-2">
+        <div *ngIf="Message" class="text-center font-semibold text-red-500 md:mb-12 mb-6">*{{Message}}</div>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="mb-4">
+            <label for="userID" class="text-gray-800 font-serif">UserID :</label>
+            <input id="userID" formControlName="userID" type="text" placeholder="Enter your userID" class="bg-gray-100 border border-gray-300 rounded-md px-4 py-2 w-full focus:outline-none focus:ring focus:ring-teal-600">
+            <div *ngIf="f['userID'].touched && f['userID'].invalid" class="text-red-500 text-sm">
+              <div *ngIf="f['userID'].errors?.['required']">*UserID is required.</div>
+            </div>
+          </div>
+          <div class="mb-4">
+            <label for="password" class="text-gray-800 font-serif">Password :</label>
+            <input id="password" formControlName="password" type="password" placeholder="Enter your password" class="bg-gray-100 border border-gray-300 rounded-md px-4 py-2 w-full focus:outline-none focus:ring focus:ring-teal-600">
+            <div *ngIf="f['password'].touched && f['password'].invalid" class="text-red-500 text-sm">
+              <div *ngIf="f['password'].errors?.['required']">*Password is required.</div>
+              <div *ngIf="f['password'].errors?.['minlength']">*Password must be at least 8 characters long.</div>
+            </div>
+          </div>
+          <button type="submit" class="bg-teal-600 w-full text-white py-2 px-4 rounded-md hover:bg-teal-700 focus:outline-none focus:bg-teal-700" [disabled]="loginForm.invalid">Login</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
