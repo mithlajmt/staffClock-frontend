@@ -2,18 +2,38 @@
     <div class="md:w-[600px] md:h-[600px] grid place-items-center">
       <div class="flex flex-col md:flex-row gap-4 items-center">
         <button
+        *ngIf="showCheckedIn"
           (click)="onCheckIn()"
           class="w-64 h-64 checkin-button text-white rounded-full border-2 border-gray-200
           hover:border-gray-500 hover:bg-gray-700 shadow-2xl transition-transform transform-gpu hover:scale-105
           active:scale-95 active:bg-gray-400 mb-4">
-          {{ buttonText }}
+          check In
         </button>
+
         <button
+        *ngIf="!showCheckedIn"
+        (click)="onCheckout()"
+        class="w-64 h-64 checkin-button text-white rounded-full border-2 border-gray-200
+        hover:border-gray-500 hover:bg-gray-700 shadow-2xl transition-transform transform-gpu hover:scale-105
+        active:scale-95 active:bg-gray-400 mb-4">
+        Check Out
+      </button>
+        <button
+        (click)="onBreakClick()"
+        *ngIf="!onBreak"
           class="w-32 h-32 take-break-button text-white rounded-full border-2 border-gray-200
           hover:border-teal-500 hover:bg-teal-700 shadow-xl transition-transform transform-gpu bg-gray-900 hover:scale-105
           active:scale-95 active:bg-yellow-900">
           Take a Break
         </button>
+        <button
+        (click)="onBreakClick()"
+        *ngIf="onBreak"
+        class="w-32 h-32 take-break-button text-white rounded-full border-2 border-gray-200
+        hover:border-teal-500 hover:bg-gray-900 shadow-xl transition-transform transform-gpu bg-red-900 hover:scale-105
+        active:scale-95 active:bg-teal-700">
+        close Break
+      </button>
       </div>
       <div class="mt-4 text-white">
         Worked Time: {{ elapsedTime }}

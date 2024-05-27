@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { BehaviorSubject, interval, Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { LoadingService } from 'src/app/services/loading.service';
@@ -10,9 +10,10 @@ import { ConfirmboxService } from './confirmbox.service';
   providedIn: 'root'
 })
 export class CheckInService {
+//  public isCheckedOut!:boolean
   storedCheckinTime: any;
   api = environment.apiUrl;
-  private checkinTimeSubject = new BehaviorSubject<Date | null>(null);
+  public checkinTimeSubject = new BehaviorSubject<Date | null>(null);
   checkinTime$ = this.checkinTimeSubject.asObservable();
 
   elapsedTime$: Observable<string>;
@@ -42,13 +43,14 @@ export class CheckInService {
     );
   }
 
+ 
   checkin(): void {
     this.loading.showLoading()
     this.http.post(`${this.api}/attendance/checkIn`, {}).subscribe({
       next: (res: any) => {
         const dialogData = {
           image: 'https://img.freepik.com/free-vector/red-triangle-warning-sign-vector-art-illustration_56104-865.jpg?t=st=1716797233~exp=1716800833~hmac=78641f1e461d87ee30e77159c034df78bfc352fea212eea387d3be0529647ad4&w=900',
-          confirmationMessage: 'checkIn successfull',
+          confirmationMessage: 'checkIn successfull enjoy your work',
           bodyText: res.message,
           showConfirmButton:true,
         }
@@ -69,6 +71,40 @@ export class CheckInService {
         this.confirm.openDialog(dialogData);
       }
     });
+  }
+
+  checkOut(){
+    this.loading.showLoading()
+    // this.http.post(`${this.api}/attendance/checkOut`, {}).subscribe({
+    //   next: (res: any) => {
+    //     const dialogData = {
+    //       image: 'https://img.freepik.com/free-vector/red-triangle-warning-sign-vector-art-illustration_56104-865.jpg?t=st=1716797233~exp=1716800833~hmac=78641f1e461d87ee30e77159c034df78bfc352fea212eea387d3be0529647ad4&w=900',
+    //       confirmationMessage: 'checkout Successfull',
+    //       bodyText: res.message,
+    //       showConfirmButton:true,
+    //     }
+    //     this.clearCheckinTime()
+    //     this.confirm.openDialog(dialogData);
+    //     const checkinTime = new Date(res.checkInTime);
+    //     this.checkinTimeSubject.next(checkinTime);
+    //     this.loading.hideLoading()
+    //   },
+    //   error: (err) => {
+    //     this.loading.hideLoading();
+    //     console.log(err);
+    //     const dialogData = {
+    //       image: 'https://img.freepik.com/free-vector/red-triangle-warning-sign-vector-art-illustration_56104-865.jpg?t=st=1716797233~exp=1716800833~hmac=78641f1e461d87ee30e77159c034df78bfc352fea212eea387d3be0529647ad4&w=900',
+    //       confirmationMessage: 'checkout failed',
+    //       bodyText:err.error.message,
+    //       showConfirmButton:true,
+    //     }
+    //     this.confirm.openDialog(dialogData);
+    //   }
+    // });
+  }
+  
+  getStatus(){
+    this.http.get(`${this.api}/attendance/status`)
   }
 
   private loadCheckinTime(): void {
@@ -92,7 +128,6 @@ export class CheckInService {
   }
 
   clearCheckinTime(): void {
-    localStorage.removeItem('checkinTime');
     this.checkinTimeSubject.next(null);
   }
 
