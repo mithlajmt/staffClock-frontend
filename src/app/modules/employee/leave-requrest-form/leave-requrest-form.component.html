@@ -1,1 +1,96 @@
-<p>leave-requrest-form works!</p>
+<div class="w-full min-h-full bg-teal-900 p-5 ">
+  
+    <div class="text-white font-kanit text-2xl p-4">
+      LEAVE APPLICATION :
+    </div>
+    <form [formGroup]="leaveForm" (ngSubmit)="onSubmit()" class="bg-teal-950 p-6 rounded-md transition duration-300 ease-in-out  border border-yellow-700 hover:border-red-900 hover:border">
+    <div class="grid grid-cols-1 md:grid-cols-1 gap-4 ">
+      <div class="flex flex-col">
+        <label for="title" class="text-white">Title:</label>
+        <input type="text" formControlName="title" class="bg-gray-700 text-white p-2 rounded-md my-1 transition duration-300 ease-in-out transform hover:scale-[1.02]" placeholder="Enter title">
+        <div *ngIf="leaveForm.controls['title'].hasError('required') && leaveForm.controls['title'].touched" class="text-red-500 mt-1">
+          Title is required.
+        </div>
+        <div *ngIf="leaveForm.controls['title'].hasError('minlength')" class="text-red-500 mt-1">
+          Title must be at least 4 characters long.
+        </div>
+      </div>
+  
+ 
+  
+      <div class="flex flex-col">
+        <label for="description" class="text-white">Description:</label>
+        <textarea rows="7" name="description" formControlName="description" class="bg-gray-600 text-white p-2 rounded-md my-1 transition duration-300 ease-in-out transform hover:scale-[1.01]" placeholder="Enter description"></textarea>
+        <div *ngIf="leaveForm.controls['description'].hasError('required') && leaveForm.controls['description'].touched" class="text-red-500 mt-1">
+          Description is required.
+        </div>
+        <div *ngIf="leaveForm.controls['description'].hasError('minlength')" class="text-red-500 mt-1">
+          Description must be at least 10 characters long.
+        </div>
+      </div>
+  
+      <div class="mt-4 md:mt-0 grid md:place-items-center">
+        <mat-form-field appearance="fill">
+          <mat-label class="text-white">Enter a date range</mat-label>
+          <mat-date-range-input [rangePicker]="picker" formGroupName="range">
+            <input matStartDate formControlName="start" placeholder="Start date" id="start" class="bg-gray-700 text-white p-2 rounded-md my-1 transition duration-300 ease-in-out transform hover:scale-[1.01]">
+            <input matEndDate formControlName="end" placeholder="End date" id="end" class="bg-gray-700 text-white p-2 rounded-md my-1 transition duration-300 ease-in-out transform hover:scale-[1.01]">
+          </mat-date-range-input>
+          <mat-hint class="text-white">MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+      </div>
+  
+      <div class="">
+        <button 
+        type="submit" 
+        [disabled]="leaveForm.invalid"
+        class="bg-yellow-600 text-gray-900 p-2 rounded-md my-2
+         transition duration-300 ease-in-out
+          transform hover:scale-105 px-12 mt-4">
+          Submit
+        </button>
+      </div>
+    </div>
+  </form>
+  
+  
+  <div class="min-h-full w-full bg-teal-950 p-8">
+    <div class="text-white text-xl mb-4 font-kanit">APPLIED LEAVE REQUESTS :</div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4" *ngIf="leaveRequests && leaveRequests.length > 0">
+      <div *ngFor="let request of leaveRequests" class="card-container bg-teal-900 p-4 rounded-lg shadow-md overflow-hidden">
+        <div class="flex items-center flex-col gap-4 cursor-pointer">
+          <img *ngIf="request.photo" [src]="request.photo" alt="" class="w-20 h-20 object-cover rounded-full mr-4">
+          <div class="flex flex-col text-left gap-2">
+            <h2 class="text-xl font-semibold text-gray-200">AUTHOR: {{ request.userName | uppercase }}</h2>
+            <h3 class="text-lg font-medium text-gray-400">TITLE: {{ request.title | uppercase }}</h3>
+            <div class="flex flex-col items-center text-sm text-gray-500 justify-around w-full">
+              <h4 class="mr-2">STATUS: <span [ngStyle]="getStatusColor(request.reviewStatus)">{{ request.reviewStatus | uppercase }}</span></h4>
+            </div>
+          </div>
+        </div>
+        <div class="bg-teal-950 p-4 mt-4 rounded-lg">
+          <p class="text-lg font-semibold text-gray-300 mb-2">Description:</p>
+          <p class="text-gray-400">{{ request.description }}</p>
+        </div>
+        <div class="bg-teal-950 p-4 rounded-lg mt-4">
+          <p class="text-lg font-semibold text-gray-300 mb-2">Dates:</p>
+          <ul class="list-disc pl-4">
+            <li class="text-gray-400 mt-2" *ngFor="let date of request.requestedDates">
+              <span>{{ date | date: 'medium' }}</span>
+            </li>
+          </ul>
+        </div>
+        <div *ngIf="request.attachment" class="bg-teal-950 p-4 mt-4 rounded-lg">
+          <p class="text-lg font-semibold text-gray-400 mb-2">Attachment:</p>
+          <img class="object-cover lg:max-h-[400px] lg:max-w-[400px] mb-2" [src]="request.attachment" alt="">
+        </div>
+      </div>
+    </div>
+    <!-- Display "No Data Found" message if leaveRequests is empty -->
+    <div class="text-red-900 text-center text-xl font-kanit" *ngIf="!leaveRequests || leaveRequests.length === 0">
+      *No Leave Request Found
+    </div>
+  </div>
+  
