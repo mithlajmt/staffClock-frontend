@@ -1,0 +1,25 @@
+<div class="flex justify-center items-center h-full bg-gradient-to-r bg-teal-950 relative">
+    <div class="md:w-[600px] md:h-[600px] grid place-items-center">
+      <div class="flex flex-col md:flex-row gap-4 items-center">
+        <button
+          (click)="onCheckIn()"
+          class="w-64 h-64 checkin-button text-white rounded-full border-2 border-gray-200
+          hover:border-gray-500 hover:bg-gray-700 shadow-2xl transition-transform transform-gpu hover:scale-105
+          active:scale-95 active:bg-gray-400 mb-4">
+          {{ buttonText }}
+        </button>
+        <button
+          class="w-32 h-32 take-break-button text-white rounded-full border-2 border-gray-200
+          hover:border-teal-500 hover:bg-teal-700 shadow-xl transition-transform transform-gpu bg-gray-900 hover:scale-105
+          active:scale-95 active:bg-yellow-900">
+          Take a Break
+        </button>
+      </div>
+      <div class="mt-4 text-white">
+        Worked Time: {{ elapsedTime }}
+      </div>
+    </div>
+  </div>
+
+  <app-confirmation-dialog (confirm)="onConfirm()"></app-confirmation-dialog>
+  

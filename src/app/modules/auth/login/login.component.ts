@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         console.log(res)
         localStorage.setItem('authToken',res.token)
         const token = localStorage.getItem('authToken');
-        this.user.role = res.role
+        this.user.setRole(res.role) 
         this.router.navigate([`/${res.role}`]);
       },
       error:(err)=>{

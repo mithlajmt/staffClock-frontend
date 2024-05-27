@@ -1,0 +1,83 @@
+<div class="min-h-full w-full bg-teal-950 md:px-14 mb-4">
+    <div class="w-full self-center min-h-full flex flex-col shadow-2xl text-[#76839A]">
+      <div class="bg-teal-950 hidden md:flex text-gray-200 flex-row justify-center items-center text-center h-16">
+        <h1 class="font-bold">ADD EMPLOYEE</h1>
+      </div>
+  
+      <div class="w-full bg-teal-900 text-white p-4 flex flex-col items-center">
+        <form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()" class="w-full grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div class="flex flex-col mb-4">
+            <label for="employeeName" class="text-white">EMPLOYEE NAME:</label>
+            <input type="text" id="employeeName" formControlName="employeeName" placeholder="Enter First Name" class="border rounded-lg border-gray-200 mt-2 px-3 py-2 text-gray-900 focus:outline-none focus:border-teal-950" required>
+            <div *ngIf="employeeName?.touched && employeeName?.invalid" class="text-red-500 text-sm">
+              <div *ngIf="employeeName?.errors?.['required']">Employee Name is required.</div>
+              <div *ngIf="employeeName?.errors?.['minlength']">Employee Name must be at least 2 characters long.</div>
+            </div>
+          </div>
+  
+          <div class="flex flex-col mb-4">
+            <label for="gender" class="text-white">GENDER:</label>
+            <select id="gender" formControlName="gender" class="border rounded-lg border-gray-200 mt-2 px-3 py-2 text-gray-900 focus:outline-none focus:border-teal-950" required>
+              <option value="" disabled selected>Select Gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+            <div *ngIf="gender?.touched && gender?.invalid" class="text-red-500 text-sm">
+              <div *ngIf="gender?.errors?.['required']">Gender is required.</div>
+            </div>
+          </div>
+  
+          <div class="flex flex-col mb-4">
+            <label for="contactNumber" class="text-white">PHONE NUMBER:</label>
+            <input type="text" id="contactNumber" formControlName="contactNumber" placeholder="Enter Phone Number" class="border rounded-lg border-gray-200 mt-2 px-3 py-2 text-gray-900 focus:outline-none focus:border-teal-950" required>
+            <div *ngIf="contactNumber?.touched && contactNumber?.invalid" class="text-red-500 text-sm">
+              <div *ngIf="contactNumber?.errors?.['required']">Phone Number is required.</div>
+              <div *ngIf="contactNumber?.errors?.['pattern']">Phone Number must be 10 digits long.</div>
+            </div>
+          </div>
+  
+          <div class="flex flex-col mb-4">
+            <label for="salary" class="text-white">SALARY:</label>
+            <input type="number" id="salary" formControlName="salary" placeholder="Enter Salary" class="border rounded-lg border-gray-200 mt-2 px-3 py-2 text-gray-900 focus:outline-none focus:border-teal-950" required>
+            <div *ngIf="salary?.touched && salary?.invalid" class="text-red-500 text-sm">
+              <div *ngIf="salary?.errors?.['required']">Salary is required.</div>
+              <div *ngIf="salary?.errors?.['minlength']">Salary must be at least 2 characters long.</div>
+            </div>
+          </div>
+  
+          <div class="flex flex-col mb-4">
+            <label for="email" class="text-white">EMAIL:</label>
+            <input type="text" id="email" formControlName="contactEmail" placeholder="Enter email address" class="border rounded-lg border-gray-200 mt-2 px-3 py-2 text-gray-900 focus:outline-none focus:border-teal-950" required>
+            <div *ngIf="contactEmail?.touched && contactEmail?.invalid" class="text-red-500 text-sm">
+              <div *ngIf="contactEmail?.errors?.['required']">Email is required.</div>
+              <div *ngIf="contactEmail?.errors?.['email']">Email is not valid.</div>
+            </div>
+          </div>
+  
+          <div class="flex flex-col mb-4">
+            <label for="jobTitle" class="text-white">JOB TITLE:</label>
+            <input type="text" id="jobTitle" formControlName="jobTitle" placeholder="Enter job title" class="border rounded-lg border-gray-200 mt-2 px-3 py-2 text-gray-900 focus:outline-none focus:border-teal-950" required>
+            <div *ngIf="jobTitle?.touched && jobTitle?.invalid" class="text-red-500 text-sm">
+              <div *ngIf="jobTitle?.errors?.['required']">Job Title is required.</div>
+              <div *ngIf="jobTitle?.errors?.['minlength']">Job Title must be at least 2 characters long.</div>
+            </div>
+          </div>
+  
+          <div class="flex flex-col mb-4">
+            <label for="dateOfBirth" class="text-white">DATE OF BIRTH:</label>
+            <input type="date" id="dateOfBirth" formControlName="dateOfBirth" class="border rounded-lg border-gray-200 mt-2 px-3 py-2 text-gray-900 focus:outline-none focus:border-teal-950" required>
+            <div *ngIf="dateOfBirth?.touched && dateOfBirth?.invalid" class="text-red-500 text-sm">
+              <div *ngIf="dateOfBirth?.errors?.['required']">Date of Birth is required.</div>
+            </div>
+          </div>
+  
+          <div class="flex justify-center p-4">
+            <button type="submit" [disabled]="!reactiveForm.valid" class="bg-teal-950 text-white font-semibold px-6 py-2 rounded-lg mt-4 w-full">SUBMIT</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <app-confirmation-dialog (confirm)="onConfirm()"></app-confirmation-dialog>
+  

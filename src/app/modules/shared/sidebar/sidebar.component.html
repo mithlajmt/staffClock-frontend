@@ -1,0 +1,58 @@
+
+    <div class="md:w-[270px] max-h-full flex flex-col shadow-2xl text-[#76839A]"*ngIf="!isLoading" >
+      <div class="bg-teal-950 text-white flex flex-row justify-center items-center text-center h-16 gap-1">
+        <mat-icon aria-hidden="false" aria-label="home icon" fontIcon="home"></mat-icon>
+        <h1 class="font-bold hidden md:flex p-4">STAFF-CLOCK</h1>
+      </div>
+  
+      <div class="bg-teal-950 text-white p-4 flex flex-col items-center min-h-screen">
+        <div class="grid gap-2 w-full h-full">
+          <button *ngIf="isAdmin" (click)="navigate('employee')" class="btn btn-hover hover:bg-teal-900 gap-5">
+            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="people"></mat-icon>
+            <span class="md:block hidden">Employees</span>
+          </button>
+  
+          <button *ngIf="isAdmin" (click)="navigate('dashboard')" class="btn btn-hover hover:bg-teal-900 gap-5">
+            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="dashboard"></mat-icon>
+            <span class="md:block hidden">Dashboard</span>
+          </button>
+  
+          <button *ngIf="isCompany || isEmployee" (click)="navigate('notifications')" class="btn btn-hover hover:bg-teal-900 gap-5">
+            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="notifications"></mat-icon>
+            <span class="md:block hidden">Notifications</span>
+          </button>
+  
+          <button *ngIf="isCompany" (click)="navigate('addemployee')" class="btn btn-hover hover:bg-teal-900 gap-5">
+            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="person_add"></mat-icon>
+            <span class="md:block hidden">Recruitment</span>
+          </button>
+  
+          <button *ngIf="isAdmin" (click)="navigate('complaintsList')" class="btn btn-hover hover:bg-teal-900 gap-5">
+            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="assignment_late"></mat-icon>
+            <span class="md:block hidden">Reviews</span>
+          </button>
+  
+          <button *ngIf="isEmployee || isAdmin" (click)="navigate('checkIn')" class="btn btn-hover hover:bg-teal-900 gap-5">
+            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="how_to_reg"></mat-icon>
+            <span class="md:block hidden">Check In/Check Out</span>
+          </button>
+  
+          <button *ngIf="isEmployee || isAdmin" (click)="navigate('attendance')" class="btn btn-hover hover:bg-teal-900 gap-5">
+            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="assignment_ind"></mat-icon>
+            <span class="md:block hidden">Attendance</span>
+          </button>
+  
+          <button *ngIf="isEmployee || isAdmin || isCompany" (click)="navigate('leaveRequest')" class="btn btn-hover hover:bg-teal-900 gap-5">
+            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="work_off"></mat-icon>
+            <span class="md:block hidden">Leave Request</span>
+          </button>
+  
+          <button (click)="logout()" class="btn btn-hover hover:bg-teal-900 gap-5">
+            <mat-icon aria-hidden="false" aria-label="Logout" fontIcon="exit_to_app"></mat-icon>
+            <span class="md:block hidden">Logout</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  

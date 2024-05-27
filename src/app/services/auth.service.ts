@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 
@@ -8,9 +9,19 @@ import { environment } from 'src/environments/environment';
 })
 export class userService {
   private api=environment.apiUrl;
-  public role=''
+  private roleSubject  = new BehaviorSubject<string>('')
+  public role$=this.roleSubject.asObservable()
 
-  constructor() {}
+  constructor(
+    private http:HttpClient
+  ) {}
 
+  setRole(role:string){
+    this.roleSubject.next(role)
+  }
+  
+  getRole(): Observable<string> {
+    return this.role$;
+  }
 
 }

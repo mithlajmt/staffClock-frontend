@@ -4,19 +4,21 @@ import { LoginComponent } from './login/login.component';
 import { AuthRoutingModule } from './auth-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { LoadingComponent } from './loading/loading.component';
 
 
 
 @NgModule({
   declarations: [
     LoginComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    LoadingComponent
   ],
   imports: [
     CommonModule,
     AuthRoutingModule,
     ReactiveFormsModule,
   ],
-  exports:[NotfoundComponent]
+  exports:[NotfoundComponent,LoadingComponent,LoadingComponent]
 })
 export class AuthModule { }
