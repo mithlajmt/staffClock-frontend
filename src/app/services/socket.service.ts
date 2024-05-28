@@ -20,7 +20,7 @@ export class SocketService {
 
   private initializeSocket(userID: string) {
     console.log(userID, 'UserID for Socket Connection');
-    this.socket = io('http://localhost:3000', {
+    this.socket = io('https://staffclock.illuminatespark.com', {
       auth: { userID }
     });
 
