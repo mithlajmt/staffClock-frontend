@@ -1,0 +1,32 @@
+<div class=" mx-auto max-w-screen-xl hidden lg:block  ">
+    <table class="table-auto w-full rounded shadow overflow-hidden">
+        <thead class="bg-teal-950 text-white">
+            <tr>
+                <th class="px-4 py-2 text-left" *ngFor="let head of tableHead">{{ head }}</th>
+            </tr>
+        </thead>
+        <tbody class="text-white cursor-pointer">
+            <ng-container *ngFor="let data of tableData">
+                <tr 
+                class="bg-teal-950 hover:bg-yellow-800 border-b border-gray-700 hover:text-gray-200 transform transition-transform duration-300" (click)="onRowClick(data[keyID])">
+                    <ng-container *ngFor="let head of tableHead">
+                        <td class="px-4 py-2 border border-gray-700">{{ data[head] }}</td>
+                    </ng-container>
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
+</div>
+
+<div class="text-white block rounded-2xl md:px-5 lg:hidden">
+    <ng-container *ngFor="let data of tableData">
+        <div class="border border-gray-700 rounded-lg hover:bg-gray-700 hover:text-gray-200 py-3 px-4 mb-3 transform transition-transform duration-300" (click)="onRowClick(data[keyID])">
+            <ng-container *ngFor="let head of tableHead">
+                <div class="grid grid-cols-2 gap-3 border-gray-900 border-b">
+                    <span class="font-semibold ">{{ head }}:</span>
+                    <span class="text-gray-300">{{ data[head] }}</span>
+                </div>
+            </ng-container>
+        </div>
+    </ng-container>
+</div>

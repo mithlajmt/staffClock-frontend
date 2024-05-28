@@ -7,13 +7,15 @@ import { EmployeeFormComponent } from './employee-form/employee-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { AuthModule } from '../auth/auth.module';
+import { ApproveLeaveComponent } from './approve-leave/approve-leave.component';
 
 
 
 @NgModule({
   declarations: [
     AdminComponent,
-    EmployeeFormComponent
+    EmployeeFormComponent,
+    ApproveLeaveComponent
   ],
   imports: [
     CommonModule,

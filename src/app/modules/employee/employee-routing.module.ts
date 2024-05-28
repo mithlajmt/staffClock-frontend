@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { EmployeeComponent } from './employee.component';
 import { CheckInComponent } from '../shared/check-in/check-in.component';
 import { LeaveRequrestFormComponent } from './leave-requrest-form/leave-requrest-form.component';
+import { AttendenceDataComponent } from '../shared/attendence-data/attendence-data.component';
 
 const routes: Routes = [
   {
@@ -13,7 +14,7 @@ const routes: Routes = [
       { path: '', redirectTo: 'checkIn', pathMatch: 'full' },
       { path: 'checkIn', component: CheckInComponent },
       { path: 'leaveRequest', component: LeaveRequrestFormComponent },
-      // { path: 'employee', component: EmployeeFormComponent },
+      { path: 'attendance', component: AttendenceDataComponent },
     ]
   }
 ];

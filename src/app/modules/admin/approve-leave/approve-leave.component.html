@@ -1,0 +1,64 @@
+<div class="min-h-full w-full bg-teal-950 p-8">
+    <div class="text-white text-xl mb-4">LEAVE REQUESTS:</div>
+
+    <ng-container *ngIf="leaveRequests.length === 0">
+        <div class="flex justify-center items-center h-full md:text-xl">
+          <p class="text-red-900 font-semibold">*No leave requests found at the Moment.</p>
+        </div>
+    </ng-container>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div *ngFor="let request of leaveRequests" class="card-container bg-teal-900 h-auto sm:overflow-hidden overflow-scroll sm:h-auto">
+            <div class="card rounded-lg shadow-md overflow-hidden bg-teal-800">
+                <div class="bg-teal-800">
+                    <div class="flex items-center flex-col gap-4 p-4 cursor-pointer">
+                        <img *ngIf="request.photo" [src]="request.photo" alt="" class="w-20 h-20 object-cover rounded-full mr-4">
+                        <div class="flex flex-col text-left gap-0 ">
+                            <h2 class="text-xl font-semibold text-gray-300">AUTHOR : {{ request.userName | uppercase }} </h2>
+                            <h3 class="text-lg font-medium text-gray-400"> TITLE : {{ request.title | uppercase }}</h3>
+                            <div class="flex flex-col items-center text-sm text-teal-500 justify-around w-full">
+                                <h4 class="mr-2 font-bold p-3 bg-teal-950"> STATUS : <span [ngStyle]="getStatusColor(request.reviewStatus)">{{ request.reviewStatus | uppercase }}</span></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 gap-4 overflow-hidden">
+                        <div class="bg-teal-900 p-4 mt-4 rounded-lg">
+                            <p class="text-lg font-semibold text-teal-300 mb-2">Description:</p>
+                            <p class="text-teal-400">{{ request.description }}</p>
+                        </div>
+                        
+                        <div class="bg-teal-900 p-4 rounded-lg mt-4 ">
+                            <p class="text-lg font-semibold text-teal-300 mb-2">Dates:</p>
+                            <ul class="list-disc pl-4" *ngFor="let date of request.requestedDates">
+                                <li
+                                 class="text-teal-400 mt-2 "
+                                 *ngIf="date"
+                                 >
+                                 <span>
+                                     {{date |date:'medium'}}
+                                 </span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div
+                        *ngIf="request.attachment"
+                         class="bg-teal-900 p-4 mt-4 rounded-lg">
+                            <p class="text-lg font-semibold text-teal-400 mb-2">Attachment:</p>
+                            <img class="object-cover lg:max-h-[400px] lg:max-w-[400px] mb-2" [src]="request.attachment" alt="">                                
+                        </div>
+                        
+                            <div class="flex justify-center gap-4 mt-5">
+                                <button
+                                (click)="onDecline(request._id)"
+                                 class="bg-red-700 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out">Decline</button>
+                                <button
+                                (click)="onApprove(request._id)"
+                                 class="bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out">Approve</button>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
