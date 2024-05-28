@@ -20,6 +20,9 @@ export class AdminService {
   updateLeaveRequest(id:string,status:string):any{
     // return this.http.put(`${this.url}/attendance/leaveRequest/${id}`,{status})
     return this.http.patch(`${this.url}/attendance/leaveRequest`,{status,id});
+  }
 
+  getEmployeeDatas(){
+    return this.http.get(`${this.url}/admin/employee`)
   }
 }

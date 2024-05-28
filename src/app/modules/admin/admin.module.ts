@@ -8,6 +8,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { AuthModule } from '../auth/auth.module';
 import { ApproveLeaveComponent } from './approve-leave/approve-leave.component';
+import { EmployeesDataComponent } from './employees-data/employees-data.component';
+import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
 
 
 
@@ -15,7 +17,9 @@ import { ApproveLeaveComponent } from './approve-leave/approve-leave.component';
   declarations: [
     AdminComponent,
     EmployeeFormComponent,
-    ApproveLeaveComponent
+    ApproveLeaveComponent,
+    EmployeesDataComponent,
+    EmployeeDetailsComponent
   ],
   imports: [
     CommonModule,

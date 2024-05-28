@@ -27,6 +27,6 @@ import { TablelistComponent } from './tablelist/tablelist.component';
     MatIconModule,
     AuthModule,
   ],
-  exports:[SidebarComponent,NavbarComponent,ConfirmationDialogComponent,CheckInComponent,AttendenceDataComponent],
+  exports:[SidebarComponent,NavbarComponent,ConfirmationDialogComponent,CheckInComponent,AttendenceDataComponent,TablelistComponent],
 })
 export class SharedModule { }

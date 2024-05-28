@@ -7,6 +7,8 @@ import { EmployeeFormComponent } from './employee-form/employee-form.component';
 import { CheckInComponent } from '../shared/check-in/check-in.component';
 import { ApproveLeaveComponent } from './approve-leave/approve-leave.component';
 import { AttendenceDataComponent } from '../shared/attendence-data/attendence-data.component';
+import { EmployeeComponent } from '../employee/employee.component';
+import { EmployeesDataComponent } from './employees-data/employees-data.component';
 
 const routes: Routes = [
   {
@@ -19,6 +21,8 @@ const routes: Routes = [
       { path: 'checkIn', component: CheckInComponent },
       { path: 'leaveRequest', component: ApproveLeaveComponent },
       { path: 'attendance', component: AttendenceDataComponent },
+      { path: 'employees', component: EmployeesDataComponent },
+      { path: 'employees', component: EmployeesDataComponent },
     ]
   }
 ];

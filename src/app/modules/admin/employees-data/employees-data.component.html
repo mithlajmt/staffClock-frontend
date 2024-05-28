@@ -1,0 +1,12 @@
+<div class="min-h-full bg-teal-900 flex flex-col p-9">
+    <h1 class="text-center text-tel-950 text-2xl font-semibold ">
+        Employees Data :
+    </h1>
+    <div class=" pt-14">
+        <app-tablelist
+        [tableData]="employeesData"
+        [keyID]="keyID"
+        (clickData)="onEmployeeClick($event)"
+        ></app-tablelist>
+    </div>
+</div>

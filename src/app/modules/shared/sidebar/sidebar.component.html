@@ -27,9 +27,9 @@
             <span class="md:block hidden">Recruitment</span>
           </button>
   
-          <button *ngIf="isAdmin" (click)="navigate('complaintsList')" class="btn btn-hover hover:bg-teal-900 gap-5">
+          <button *ngIf="isAdmin" (click)="navigate('employees')" class="btn btn-hover hover:bg-teal-900 gap-5">
             <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="assignment_late"></mat-icon>
-            <span class="md:block hidden">Reviews</span>
+            <span class="md:block hidden">Employees</span>
           </button>
   
           <button *ngIf="isEmployee || isAdmin" (click)="navigate('checkIn')" class="btn btn-hover hover:bg-teal-900 gap-5">
