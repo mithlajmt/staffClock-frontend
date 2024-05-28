@@ -11,7 +11,6 @@ import { EmployeeComponent } from '../employee/employee.component';
 import { EmployeesDataComponent } from './employees-data/employees-data.component';
 import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
 import { EmployeeregisterComponent } from './employeeregister/employeeregister.component';
-import { AdminGuard } from 'src/app/services/admin-guard.service';
 
 const routes: Routes = [
   {
