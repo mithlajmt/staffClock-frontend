@@ -12,15 +12,8 @@
             <span class="md:block hidden">Recruitment</span>
           </button>
   
-          <!-- <button *ngIf="isAdmin" (click)="navigate('dashboard')" class="btn btn-hover hover:bg-teal-900 gap-5">
-            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="dashboard"></mat-icon>
-            <span class="md:block hidden">Dashboard</span>
-          </button> -->
-  
-          <button *ngIf="isCompany || isEmployee" (click)="navigate('notifications')" class="btn btn-hover hover:bg-teal-900 gap-5">
-            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="notifications"></mat-icon>
-            <span class="md:block hidden">Notifications</span>
-          </button>
+
+    
   
           <button *ngIf="isCompany" (click)="navigate('addemployee')" class="btn btn-hover hover:bg-teal-900 gap-5">
             <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="person_add"></mat-icon>

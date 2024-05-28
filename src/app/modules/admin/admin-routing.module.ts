@@ -17,7 +17,6 @@ const routes: Routes = [
   {
     path: '',
     component: AdminComponent,
-    canActivate: [AdminGuard],
     children: [
       { path: '', redirectTo: 'checkIn', pathMatch: 'full' },
       { path: 'dashboard', component: DashboardComponent },

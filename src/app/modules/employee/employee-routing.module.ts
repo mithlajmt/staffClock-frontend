@@ -11,7 +11,6 @@ const routes: Routes = [
   {
     path: '',
     component: EmployeeComponent,
-    canActivate: [EmployeeGuard],
     children: [
       { path: '', redirectTo: 'checkIn', pathMatch: 'full' },
       { path: 'checkIn', component: CheckInComponent },
