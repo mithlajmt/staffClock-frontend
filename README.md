@@ -1,27 +1,109 @@
-# StaffclockFrontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.3.
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+# Attendance System 
 
-## Code scaffolding
+## Project Overview
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+This project is an advanced attendance system designed to streamline employee attendance tracking with active notifications. The system provides role-based access for Admins and Employees, each with tailored dashboards and functionalities. The implementation leverages modern technologies such as Node.js, Express.js, angular. MongoDB, Redis, and Socket.io to ensure scalability and real-time communication.
 
-## Build
+## Features
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Employee Dashboard
+- **Check In/Out:**
+  - Intuitive button for employees to start and end their workday.
+- **Time Tracker:**
+  - Real-time stopwatch that runs continuously, displaying the total elapsed work time.
+- **Break Management:**
+  - Break button to mark breaks without stopping the main timer, ensuring accurate work time records.
+  - Separate storage for break data.
+- **Reminders:**
+  - Notification system to remind employees of check-in and check-out timings based on predefined shift schedules.
+- **Leave Management:**
+  - Leave request form that sends a request to the admin for approval.
+- **Attendance History:**
+  - Detailed attendance history table showing daily time spent and leave details with click-to-preview functionality.
 
-## Running unit tests
+### Admin Dashboard
+- **Admin Privileges:**
+  - Access to all employee functionalities.
+- **Employee Management:**
+  - Comprehensive view of all employee data and attendance records.
+  - Quick status overview to see if an employee is checked in, checked out, on break, or on leave.
+- **User Administration:**
+  - Ability to add, block, or remove employees.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Tech Stack
 
-## Running end-to-end tests
+- **Backend:** Node.js, Express.js
+- **Frontend:** angular
+- **Database:** MongoDB
+- **Notifications:** Socket.io
+- **JWT Storage:** Redis
+- **Scheduler:** NodeCron
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Installation Instructions
 
-## Further help
+### Prerequisites
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Node.js (>= 14.x.x)
+- MongoDB
+- Redis
+- Git
+
+### Steps
+
+1. **Clone the Repository**
+   ```bash
+   frontend :  https://github.com/mithlajmt/staffClock-frontend.git
+   backend :  https://github.com/mithlajmt/staffClock-backend.git
+   socket : https://github.com/mithlajmt/staffClock-socket.git
+   cd attendance-system
+   ```
+
+2. **Install Dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Setup Environment Variables**
+   - Create a `.env` file in the root directory and add the following environment variables:
+PORT,
+MONGODB_URL,
+JWT_SECRET_KEY =,
+GOOGLE_APP_PASS =,
+GMAIL_ADDRESS =,
+
+     ```
+
+4. **Run the Backend Server**
+   ```bash
+   npm start
+   ```
+
+5. **Build and Run the Frontend**
+   - Navigate to the `client` directory:
+     ```bash
+     cd client
+     npm install
+     npm run build
+     ```
+
+6. **Start Socket Server**
+   ```bash
+   node socketServer.js
+   ```
+
+#
+
+
+
+
+
+For any questions or further assistance, please reach out at [mithlajmatta@gmail.com].
+
+---
+
+Thank you for reviewing my project. I look forward to your feedback!
+
