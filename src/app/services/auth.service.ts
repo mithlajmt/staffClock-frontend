@@ -12,6 +12,9 @@ export class userService {
   private roleSubject  = new BehaviorSubject<string>('')
   public role$=this.roleSubject.asObservable()
 
+  private useridSubject  = new BehaviorSubject<string>('')
+  public userid$=this.useridSubject.asObservable()
+
   constructor(
     private http:HttpClient
   ) {}
@@ -19,9 +22,15 @@ export class userService {
   setRole(role:string){
     this.roleSubject.next(role)
   }
+  setuserID(userID:string){
+    this.useridSubject.next(userID)
+  }
   
   getRole(): Observable<string> {
     return this.role$;
+  }
+  getuserID(): Observable<string> {
+    return this.userid$;
   }
 
 }

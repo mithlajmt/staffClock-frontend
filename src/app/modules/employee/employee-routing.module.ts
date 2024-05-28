@@ -5,11 +5,13 @@ import { EmployeeComponent } from './employee.component';
 import { CheckInComponent } from '../shared/check-in/check-in.component';
 import { LeaveRequrestFormComponent } from './leave-requrest-form/leave-requrest-form.component';
 import { AttendenceDataComponent } from '../shared/attendence-data/attendence-data.component';
+import { EmployeeGuard } from 'src/app/services/employee-guard.service';
 
 const routes: Routes = [
   {
     path: '',
     component: EmployeeComponent,
+    canActivate: [EmployeeGuard],
     children: [
       { path: '', redirectTo: 'checkIn', pathMatch: 'full' },
       { path: 'checkIn', component: CheckInComponent },

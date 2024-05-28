@@ -10,6 +10,8 @@ import { AuthModule } from '../auth/auth.module';
 import { ApproveLeaveComponent } from './approve-leave/approve-leave.component';
 import { EmployeesDataComponent } from './employees-data/employees-data.component';
 import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
+import { EmployeeModule } from '../employee/employee.module';
+import { EmployeeregisterComponent } from './employeeregister/employeeregister.component';
 
 
 
@@ -19,7 +21,8 @@ import { EmployeeDetailsComponent } from './employee-details/employee-details.co
     EmployeeFormComponent,
     ApproveLeaveComponent,
     EmployeesDataComponent,
-    EmployeeDetailsComponent
+    EmployeeDetailsComponent,
+    EmployeeregisterComponent
   ],
   imports: [
     CommonModule,
@@ -29,6 +32,7 @@ import { EmployeeDetailsComponent } from './employee-details/employee-details.co
     FormsModule,
     MatIconModule,
     AuthModule,
+    EmployeeModule,
 
   ]
 })

@@ -15,6 +15,7 @@ export class TablelistComponent {
 
   ngOnInit(): void {
     console.log(this.keyID);
+    console.log(this.tableData);
     
   }
   

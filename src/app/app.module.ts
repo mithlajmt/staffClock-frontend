@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { AuthInterceptor } from './services/interceptor.service';
 import { AuthModule } from './modules/auth/auth.module';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { AuthModule } from './modules/auth/auth.module';
     BrowserAnimationsModule,
     MatIconModule,
     AuthModule,
+    RouterModule,
     
   ],
   providers: [ 

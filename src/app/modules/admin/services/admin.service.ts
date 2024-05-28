@@ -25,4 +25,16 @@ export class AdminService {
   getEmployeeDatas(){
     return this.http.get(`${this.url}/admin/employee`)
   }
+
+  getFullEmployeeData(id:any){
+    return this.http.get(`${this.url}/admin/employee/${id}`);
+  }
+
+  getEmployeeAttendance(id:any){
+    return this.http.get(`${this.url}/attendance/employee/${id}`);
+  }
+
+  deletingEmployee(id:any){
+    return this.http.delete(`${this.url}admin/employee/${id}`);
+  }
 }

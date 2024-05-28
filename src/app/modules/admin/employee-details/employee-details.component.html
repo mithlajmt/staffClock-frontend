@@ -1,1 +1,43 @@
-<p>employee-details works!</p>
+<div
+*ngIf="employeeData"
+ class="w-full h-full overflow-scroll bg-teal-950">
+    <div class="p-8">
+      <div class="p-8 bg-teal-800 shadow mt-24">
+        <div class="grid grid-cols-1 md:grid-cols-3">
+          <div class="grid grid-cols-3 text-center order-last md:order-first mt-20 md:mt-0">
+            <div>
+              <p class="font-bold text-gray-700 text-xl">{{ employeeData.salary | currency: 'INR' }}</p>
+              <p class="text-gray-400">Salary</p>
+            </div>
+            <div>
+              <p class="font-bold text-gray-700 text-xl">{{ employeeData.role }}</p>
+              <p class="text-gray-400">Role</p>
+            </div>
+            <div>
+              <p class="font-bold text-gray-700 text-xl">{{ employeeData.gender }}</p>
+              <p class="text-gray-400">Gender</p>
+            </div>
+          </div>
+          <div class="">
+            <div class="w-48 h-48 bg-indigo-100 object-cover mx-auto rounded-full shadow-2xl inset-x-0 top-0 -mt-24 flex text-indigo-500">
+              <img class="flex-1 rounded-full object-cover" [src]="" alt="">
+            </div>
+          </div>
+          <div class="space-x-8 flex justify-between mt-32 md:mt-0 md:justify-center">
+          </div>
+        </div>
+        <div class="mt-20 text-center border-b pb-12">
+          <h1 class="text-4xl font-medium text-gray-300">{{ employeeData.name }}</h1>
+          <p class="font-light text-gray-400 mt-3">{{ employeeData.email }}</p>
+          <p class="mt-8 text-gray-500">{{ employeeData.role }}</p>
+          <p class="mt-8 text-gray-400">{{ employeeData.contactNumber }}</p>
+        </div>
+        <div class="text-center mt-8">
+          <!-- <button class="bg-red-600 text-white py-2 px-4 rounded" (click)="onDelete()">Delete</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <app-employeeregister></app-employeeregister>
+  

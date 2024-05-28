@@ -1,0 +1,17 @@
+<div class="min-h-full bg-teal-950 p-4">
+    <h1 class="text-center text-white text-2xl mb-4">Employee Attendance</h1>
+    
+    <ng-container *ngIf="showTable; else noDataTemplate">
+      <app-tablelist
+        [tableData]="attendanceData"
+        [keyID]="keyID">
+      </app-tablelist>
+    </ng-container>
+    
+    <ng-template #noDataTemplate>
+      <div class="text-center text-white">
+        <p>No data available</p>
+      </div>
+    </ng-template>
+  </div>
+  
