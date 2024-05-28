@@ -48,7 +48,6 @@ export class AppComponent implements OnInit {
         if (err.status === 401) {
           // Token expired, clear authToken and navigate to login page
           localStorage.removeItem('authToken');
-          this.router.navigate(['/login'])
         }
 
       }
